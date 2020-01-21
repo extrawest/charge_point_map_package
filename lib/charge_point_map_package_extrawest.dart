@@ -1,4 +1,4 @@
-library charge_point_map_package;
+library charge_point_map_package_extrawest;
 
 import 'dart:async';
 import 'dart:ui';
@@ -14,25 +14,29 @@ class ChargePointMapPackage {
     imageBitmap = await _getAssetsBitmapImage(context);
   }
 
-  static Future<BitmapDescriptor> _getAssetsBitmapImage(BuildContext context)  async{
-    final Completer<BitmapDescriptor> bitmapIcon = Completer<BitmapDescriptor>();
+  static Future<BitmapDescriptor> _getAssetsBitmapImage(
+      BuildContext context) async {
+    final Completer<BitmapDescriptor> bitmapIcon =
+        Completer<BitmapDescriptor>();
     final ImageConfiguration config = createLocalImageConfiguration(context);
 
-    AssetImage(_getImagePathByStatus(), package: "charge_point_map_package")
+    AssetImage(_getImagePathByStatus(),
+            package: "charge_point_map_package_extrawest")
         .resolve(config)
         .addListener(ImageStreamListener((ImageInfo image, bool _) async {
-      final ByteData bytes = await image.image.toByteData(format: ImageByteFormat.png);
-      final BitmapDescriptor bitmap = BitmapDescriptor.fromBytes(bytes.buffer.asUint8List());
+      final ByteData bytes =
+          await image.image.toByteData(format: ImageByteFormat.png);
+      final BitmapDescriptor bitmap =
+          BitmapDescriptor.fromBytes(bytes.buffer.asUint8List());
       bitmapIcon.complete(bitmap);
     }));
     return await bitmapIcon.future;
   }
 
   static String _getImagePathByStatus() {
-    return "assets/pin_aaa.png";
+    return "assets/chargepoint_pin.png";
   }
 }
-
 
 class ChargePointMarker extends Marker {
   ChargePointMarker({
@@ -48,18 +52,17 @@ class ChargePointMarker extends Marker {
     VoidCallback onTap,
     ValueChanged<LatLng> onDragEnd,
   }) : super(
-      markerId: markerId,
-      alpha: alpha,
-      consumeTapEvents: consumeTapEvents,
-      draggable: draggable,
-      flat: flat,
-      icon: ChargePointMapPackage.imageBitmap ?? BitmapDescriptor.defaultMarker,
-      position: position,
-      rotation: rotation,
-      visible: visible,
-      zIndex: zIndex,
-      onTap: onTap,
-      onDragEnd: onDragEnd);
+            markerId: markerId,
+            alpha: alpha,
+            consumeTapEvents: consumeTapEvents,
+            draggable: draggable,
+            flat: flat,
+            icon: ChargePointMapPackage.imageBitmap ??
+                BitmapDescriptor.defaultMarker,
+            position: position,
+            rotation: rotation,
+            visible: visible,
+            zIndex: zIndex,
+            onTap: onTap,
+            onDragEnd: onDragEnd);
 }
-
-

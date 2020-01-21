@@ -1,46 +1,3 @@
-# charge_point_map_package_extrawest
-
-A new Flutter package with charge point custom markers.
-
-# Dependence
-    package use plugin google_maps_flutter: ^0.5.21+15.
-
-# Preparation
-The package serves as an addition to the [google_maps_flutter plugin](https://pub.dev/packages/google_maps_flutter#-readme-tab-).
-So, firstly, use their instruction.
-
-# Usage
-
-Future ChargePointMapPackage.initialize(BuildContext context) - async static method for loading
-BitmapDescriptor for loading icon. It should be called and executed before creating ChargePointMarker.
-
-
-class ChargePointMarker - class extend google_maps_flutter.Marker.  All fields are the same except
-for the icon field. ChargePointMarker have not this field because the package uses a persistent
-custom icon.
-
-
-# Example
-```dart
-import 'package:flutter/material.dart';
-import 'package:charge_point_map_package_extrawest/charge_point_map_package_extrawest.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
 import 'package:charge_point_map_package_extrawest/charge_point_map_package_extrawest.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -103,16 +60,12 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         body: isLoading
             ? Center(
-          child: CircularProgressIndicator(),
-        )
+                child: CircularProgressIndicator(),
+              )
             : GoogleMap(
-            initialCameraPosition: CameraPosition(
-                target: LatLng(15, 15), zoom: 5),
-            markers: markers),
+                initialCameraPosition: CameraPosition(target: LatLng(15, 15), zoom: 5),
+                markers: markers),
       ),
     );
   }
 }
-
-
-```

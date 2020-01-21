@@ -1,7 +1,7 @@
-name: charge_point_map_package
+name: charge_point_map_package_extrawest
 description: A new Flutter package with chargepoint custom markers.
-version: 0.0.1
-homepage: https://www.extrawest.com/
+version: 0.0.2
+homepage: https://www.extrawest.com
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
@@ -19,4 +19,4 @@ dev_dependencies:
 
 flutter:
   assets:
-    - assets/
+    - assets/chargepoint_pin.png

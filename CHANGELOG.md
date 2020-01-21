@@ -1,3 +1,7 @@
-## [0.0.1] - TODO: Add release date.
+## 0.0.2
+- Updated documentation
+- Created example
+- Removed unnecessary assets
 
-* TODO: Describe initial release.
+## 0.0.1
+- Made custom pins for charge points.
